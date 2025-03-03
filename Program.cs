@@ -1,10 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// // See https://aka.ms/new-console-template for more information
 
-// initial setup
+// // initial setup
 
 // Console.WriteLine("Hello, World!");
 
-//basic strings
+// // basic strings
 
 // string fName = "fname";
 // string lName = "lname";
@@ -18,7 +18,7 @@
 
 // Console.WriteLine(name.Length);
 
-// conditionals and loops
+// // conditionals and loops
 
 // decimal a = 89.23M;
 // decimal b = 12.21M;
@@ -59,7 +59,7 @@
 //     Console.WriteLine($"value of counter is {counter}");
 // } while (counter < 7);
 
-        // arrays and forloops
+//         // arrays and forloops
 
 // int[] array = {1,3,4,5,6};
 
@@ -73,10 +73,25 @@
 //     Console.WriteLine($"current value of i is {i}");
 // }
 
-        // working with List<T>
+//         // working with List<T>
 
-var names  = new List<String> {"<name>", "John", "Bob"};
+// var names  = new List<String> {"<name>", "John", "Bob"};
 
-foreach (var name in names){
-    Console.WriteLine($"Name: {name.ToUpper()}");
+// foreach (var name in names){
+//     Console.WriteLine($"Name: {name.ToUpper()}");
+// }
+
+using System.IO.Pipes;
+
+namespace hello
+{
+    class helloWorld
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("hello world");
+
+            Console.ReadKey();
+        }
+    }
 }
