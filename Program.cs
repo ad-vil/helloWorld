@@ -81,17 +81,98 @@
 //     Console.WriteLine($"Name: {name.ToUpper()}");
 // }
 
-using System.IO.Pipes;
+// // basic class syntax
 
-namespace hello
+// using System.IO.Pipes;
+
+// namespace hello
+// {
+//     class helloWorld
+//     {
+//         static void Main(string[] args) // svm
+//         {
+//             // Console.WriteLine("hello world");
+
+//             // Console.ReadKey(); // prevents screen from closing fast
+
+//             var names = new List<String> { "name 1", "name 2", "name 3" };
+
+//             foreach (var name in names)
+//             {
+//                 Console.WriteLine($"name: {name}");
+//             }
+
+//             // names.Add("name 4");
+//             names = {..names, "name 4"}
+//             bool boolean = names.Contains("name 3");
+//             Console.WriteLine(boolean);
+
+//             foreach (var name in names)
+//             {
+//                 Console.WriteLine($"name {name.ToUpper()}");
+//             }
+//         }
+//     }
+// }
+
+// // SEARCHING AND SORTING LISTS
+
+// using System.IO.Pipes;
+
+// class main
+// {
+//     static void Main(string[] args)
+//     {
+//         var names = new List<String> { "john", "bill", "bob", "zane", "adil" };
+
+//         names.Sort(); // can do the same for numbers
+
+//         foreach (var name in names)
+//         {
+//             Console.WriteLine(name);
+//         }
+
+//         Console.WriteLine($"adil is in slot {names.IndexOf("adil")}");
+//     }
+// }
+
+// // LANGAUGE INTEGRATED QUERIES and METHODS (LINQ)
+
+using System.Runtime.CompilerServices;
+
+class Example
 {
-    class helloWorld
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("hello world");
+        int[] testScores = { 100, 92, 83, 50, 66, 93, 95, 75 };
 
-            Console.ReadKey();
+        // can use forloop for this
+        // foreach (int score in testScores)
+        // {
+        //     if(score > 80){
+        //         Console.WriteLine($"{score} score is over 80");
+        //     }
+        // }
+
+        // IEnumerable<int> scoreQuery =
+        //     from score in testScores
+        //     where score > 80
+        //     orderby score ascending // similar to SQL
+        //     select score;
+
+        // foreach (int i in scoreQuery)
+        // {
+        //     Console.Write(i + " ");
+        // }
+
+        var scoreQuery = testScores.Where(s => s > 80).
+                        OrderByDescending(s => s); // s such that s > 80
+
+        List<int> myScores = scoreQuery.ToList();
+
+        foreach (var score in myScores)
+        {
+            Console.WriteLine($"score is {score}");
         }
     }
 }
