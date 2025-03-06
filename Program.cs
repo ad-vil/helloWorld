@@ -138,41 +138,114 @@
 
 // // LANGAUGE INTEGRATED QUERIES and METHODS (LINQ)
 
-using System.Runtime.CompilerServices;
+// using System.Runtime.CompilerServices;
 
-class Example
+// class Example
+// {
+//     static void Main(string[] args)
+//     {
+//         int[] testScores = { 100, 92, 83, 50, 66, 93, 95, 75 };
+
+//         // can use forloop for this
+//         // foreach (int score in testScores)
+//         // {
+//         //     if(score > 80){
+//         //         Console.WriteLine($"{score} score is over 80");
+//         //     }
+//         // }
+
+//         // IEnumerable<int> scoreQuery =
+//         //     from score in testScores
+//         //     where score > 80
+//         //     orderby score ascending // similar to SQL
+//         //     select score;
+
+//         // foreach (int i in scoreQuery)
+//         // {
+//         //     Console.Write(i + " ");
+//         // }
+
+//         var scoreQueryLambda = testScores.Where(s => s > 80).
+//                         OrderByDescending(s => s); // s such that s > 80
+
+//         // the above 2 are the same but lambda is less readable
+
+//         List<int> myScores = scoreQueryLambda.ToList();
+
+//         foreach (var score in myScores)
+//         {
+//             Console.WriteLine($"score is {score}");
+//         }
+//     }
+// }
+
+
+// OBJECT ORIENTED PROGRAMMING ._.
+
+// Basic OOP in C#
+
+// Defining a class
+class Person
+{
+    protected string firstName;
+    protected string lastName;
+    protected int age;
+
+    // ctor
+    public Person(string fName, string lName, int age)
+    {
+        this.firstName = fName;
+        this.lastName = lName;
+        this.age = age;
+    }
+
+    public int Age
+    {
+        get { return age; }
+        set
+        {
+            if (value > 0)
+                age = value;
+        }
+    }
+
+    // Method
+    public void Introduce()
+    {
+        Console.WriteLine($"hello my name is {firstName} {lastName} and I am {age} years old.");
+    }
+}
+
+// inheritance
+class Student : Person
+{
+    public int StudentID { get; set; }
+
+    public Student(string fName, string lName, int age, int studentID)
+        : base(fName, lName, age)
+    {
+        this.StudentID = studentID;
+    }
+
+    // overriding
+    public new void Introduce()
+    {
+        Console.WriteLine($"hello I am {StudentID}, a student named {firstName} {lastName}, and I am {Age} years old.");
+        // above line is prevented from working due to inaccessibility if var is private
+    }
+}
+
+class Program
 {
     static void Main(string[] args)
     {
-        int[] testScores = { 100, 92, 83, 50, 66, 93, 95, 75 };
+        Person person1 = new Person("john", "dylan", 25);
+        Student student1 = new Student("bill", "bob", 20, 12345);
 
-        // can use forloop for this
-        // foreach (int score in testScores)
-        // {
-        //     if(score > 80){
-        //         Console.WriteLine($"{score} score is over 80");
-        //     }
-        // }
+        person1.Introduce();
+        student1.Introduce();
 
-        // IEnumerable<int> scoreQuery =
-        //     from score in testScores
-        //     where score > 80
-        //     orderby score ascending // similar to SQL
-        //     select score;
-
-        // foreach (int i in scoreQuery)
-        // {
-        //     Console.Write(i + " ");
-        // }
-
-        var scoreQuery = testScores.Where(s => s > 80).
-                        OrderByDescending(s => s); // s such that s > 80
-
-        List<int> myScores = scoreQuery.ToList();
-
-        foreach (var score in myScores)
-        {
-            Console.WriteLine($"score is {score}");
-        }
+        student1.Age = 21;
+        Console.WriteLine($"new age: {student1.Age}");
     }
 }
